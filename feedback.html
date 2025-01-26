@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rich Papa</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .hero {
+            background: url('home.avif') no-repeat center center/cover;
+            height: 600px;
+            color: white;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero h1 {
+            font-size: 5rem;
+        }
+        .hero p {
+            font-size: 1.5rem;
+        }
+        .footer {
+            background-color: #343a40;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="home.html">Rich Papa</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="home.html">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="breakfast.html">Breakfast</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="lunch.html">Lunch</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="dinner.html">Dinner</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="others.html">Others</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="feedback.html">Feedback</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section 
+  class="feedback-bar d-flex justify-content-center align-items-center" 
+  style="height: 100vh; background:#007bff;">
+    <div 
+      class="feedback-form-container text-center p-4" 
+      style="background: white; border-radius: 15px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); max-width: 400px; width: 90%;">
+        <h2 
+          class="mb-4" 
+          style="color: #6a11cb; font-weight: bold; font-size: 1.8rem;">
+          Share Your Feedback
+        </h2>
+        <form id="feedback-form" action="#" method="POST" novalidate>
+            <!-- Name Input -->
+            <div class="mb-3">
+                <label for="name" class="form-label" style="font-weight: bold; color: black; font-size: 1.2rem;">Your Name</label>
+                <br>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
+                  class="form-control rounded-pill p-3 input-field" 
+                  placeholder="Your Name" 
+                  required 
+                  style="border: 2px solid #ddd; font-size: 1rem;">
+            </div>
+            
+
+            <div class="mb-3">
+                <label for="feedback" class="form-label" style="font-weight: bold; color: black; font-size: 1.2rem;">Your Feedback</label>
+                <br>
+                <textarea 
+                  id="feedback" 
+                  name="feedback" 
+                  class="form-control rounded-3 p-3 input-field" 
+                  rows="4" 
+                  placeholder="Your Feedback" 
+                  required 
+                  style="border: 2px solid #ddd; font-size: 1rem;"></textarea>
+            </div>
+            <br>
+            <div class="mb-3">
+                <button 
+                  type="submit" 
+                  class="btn btn-submit w-100 rounded-pill" 
+                  style="background: linear-gradient(135deg, #6a11cb, #2575fc); color: white; font-size: 1rem; font-weight: bold; padding: 10px 20px; border: none;">
+                  Submit
+                </button>
+            </div>
+        </form>
+        
+        <button 
+          id="see-more-button" 
+          class="btn btn-outline-primary w-100 rounded-pill" 
+          style="border: 2px solid #6a11cb; color: #6a11cb; font-size: 1rem; font-weight: bold;">
+          See More Feedback
+        </button>
+        <!-- Hidden Feedback Section -->
+        <div id="additional-feedback" class="mt-4" style="display: none;">
+            <h3 style="color: #6a11cb; font-size: 1.5rem;">What Our Customers Says</h3>
+            <ul class="list-unstyled text-start mt-3">
+                <li class="mb-3">
+                    <p style="font-size: 1rem; font-weight: bold;">John Doe:</p>
+                    <p>"This platform is amazing! Great design and usability."</p>
+                </li>
+                <li class="mb-3">
+                    <p style="font-size: 1rem; font-weight: bold;">Jane Smith:</p>
+                    <p>"I love how easy it is to provide feedback. Keep up the good work!"</p>
+                </li>
+                <li>
+                    <p style="font-size: 1rem; font-weight: bold;">Alex Johnson:</p>
+                    <p>"Great experience! Looking forward to more features."</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+
+<style>
+/* Feedback Bar Styles */
+.feedback-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+}
+
+.feedback-form-container {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Field Styles */
+.input-field {
+    font-size: 1rem;
+    padding: 10px 15px;
+    border-radius: 20px;
+    border: 2px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.input-field:focus {
+    border-color: #6a11cb;
+    box-shadow: 0 0 10px rgba(106, 17, 203, 0.2);
+    outline: none;
+}
+
+/* Button Styles */
+.btn-submit {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-submit:hover {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    transform: translateY(-2px);
+}
+
+.btn-submit:active {
+    transform: translateY(1px);
+    background: linear-gradient(135deg, #1c4fb5, #5a0aa1);
+}
+
+.btn-outline-primary {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-outline-primary:hover {
+    background-color: #6a11cb;
+    color: white;
+}
+</style>
+
+
+<script>
+    document.getElementById('see-more-button').addEventListener('click', function () {
+        const feedbackSection = document.getElementById('additional-feedback');
+        const isHidden = feedbackSection.style.display === 'none';
+        feedbackSection.style.display = isHidden ? 'block' : 'none';
+        this.textContent = isHidden ? 'Hide Feedback' : 'See More Feedback';
+    });
+</script>
+</body>
+</html>
