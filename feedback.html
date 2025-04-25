@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rich Papa</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .hero {
+      background: url('home.avif') no-repeat center center/cover;
+      height: 600px;
+      color: white;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero h1 {
+      font-size: 5rem;
+    }
+    .hero p {
+      font-size: 1.5rem;
+    }
+    .footer {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    .feedback-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+    }
+    .feedback-form-container {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      max-width: 400px;
+      width: 90%;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    .input-field {
+      font-size: 1rem;
+      padding: 10px 15px;
+      border-radius: 20px;
+      border: 2px solid #ddd;
+      transition: all 0.3s ease;
+    }
+    .input-field:focus {
+      border-color: #6a11cb;
+      box-shadow: 0 0 10px rgba(106, 17, 203, 0.2);
+      outline: none;
+    }
+    .btn-submit {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      transition: all 0.3s ease-in-out;
+    }
+    .btn-submit:hover {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+      transform: translateY(-2px);
+    }
+    .btn-submit:active {
+      transform: translateY(1px);
+      background: linear-gradient(135deg, #1c4fb5, #5a0aa1);
+    }
+    .btn-outline-primary {
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .btn-outline-primary:hover {
+      background-color: #6a11cb;
+      color: white;
+      .card {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-weight: bold;
+    }
+
+    .card-text {
+        font-size: 1rem;
+    }
+
+    footer.blockquote-footer {
+        font-size: 0.9rem;
+        color: #777;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="home.html">Rich Papa</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="home.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="breakfast.html">Breakfast</a></li>
+        <li class="nav-item"><a class="nav-link" href="lunch.html">Lunch</a></li>
+        <li class="nav-item"><a class="nav-link" href="dinner.html">Dinner</a></li>
+        <li class="nav-item"><a class="nav-link" href="others.html">Others</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="feedback.html">Feedback</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Feedback Section -->
+<section class="feedback-bar">
+  <div class="feedback-form-container text-center p-4">
+    <h2 class="mb-4" style="color: #6a11cb; font-weight: bold;">Share Your Feedback</h2>
+    <form id="feedback-form" action="submit_feedback.php" method="POST">
+      <div class="mb-3">
+        <label for="name" class="form-label" style="font-weight: bold; color: black;">Your Name</label>
+        <input type="text" id="name" name="name" class="form-control rounded-pill p-3 input-field" placeholder="Your Name" required />
+      </div>
+      <div class="mb-3">
+        <label for="feedback" class="form-label" style="font-weight: bold; color: black;">Your Feedback</label>
+        <textarea id="feedback" name="feedback" class="form-control rounded-3 p-3 input-field" rows="4" placeholder="Your Feedback" required></textarea>
+      </div>
+      <div class="mb-3">
+        <button type="submit" class="btn btn-submit w-100 rounded-pill">Submit</button>
+      </div>
+    </form>
+
+    <button id="see-more-button" class="btn btn-outline-primary w-100 rounded-pill">See More Feedback</button>
+
+    <!-- Dynamic Feedback -->
+    <div id="additional-feedback" class="mt-4" style="display: none;"></div>
+  </div>
+</section>
+
+<!-- Feedback Script -->
+<script>
+  document.getElementById('feedback-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    fetch('/richpapa/submit_feedback.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        alert('Thank you for your feedback!');
+        this.reset();
+        loadFeedback(); // Refresh feedback
+      } else {
+        alert('Failed to submit feedback: ' + data.message);
+      }
+    });
+  });
+
+  document.getElementById('see-more-button').addEventListener('click', function () {
+    const feedbackSection = document.getElementById('additional-feedback');
+    const isHidden = feedbackSection.style.display === 'none';
+
+    if (isHidden) {
+      loadFeedback();
+      feedbackSection.style.display = 'block';
+      this.textContent = 'Hide Feedback';
+    } else {
+      feedbackSection.style.display = 'none';
+      this.textContent = 'See More Feedback';
+    }
+  });
+
+  function loadFeedback() {
+    fetch('/richpapa/get_feedback.php')
+      .then(res => res.json())
+      .then(feedbacks => {
+        const feedbackList = feedbacks.map(fb => `
+          <li class="mb-3">
+            <p style="font-size: 1rem; font-weight: bold;">${fb.name}:</p>
+            <p>"${fb.message}"</p>
+            <small>Posted on: ${fb.created_at}</small>
+          </li>
+        `).join('');
+        document.getElementById('additional-feedback').innerHTML = `
+          <h3 style="color: #6a11cb; font-size: 1.5rem;">What Our Customers Say</h3>
+          <ul class="list-unstyled text-start mt-3">${feedbackList}</ul>
+        `;
+      });
+  }
+</script>
+
+</body>
+</html>
